@@ -4,11 +4,11 @@
   
   
   <entry>
-    <title>测试文章</title>
-    <link href="/2024/11/11/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
-    <url>/2024/11/11/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
+    <title>关于壳</title>
+    <link href="/2024/11/22/%E5%85%B3%E4%BA%8E%E5%A3%B3/"/>
+    <url>/2024/11/22/%E5%85%B3%E4%BA%8E%E5%A3%B3/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h2 id="关于壳"><a href="#关于壳" class="headerlink" title="关于壳"></a>关于壳</h2><h3 id="什么是壳"><a href="#什么是壳" class="headerlink" title="什么是壳"></a>什么是壳</h3><h4 id="什么是壳-1"><a href="#什么是壳-1" class="headerlink" title="什么是壳"></a>什么是壳</h4><p>为了防止程序被非法修改或反编译，开发人员通常会在程序中加入一段如同保护层的代码，使得原程序代码失去原本的面目，这段如同保护层的代码和自然界的壳在功能上很相近，因此把这样的程序为“壳〞。</p><h4 id="壳的种类"><a href="#壳的种类" class="headerlink" title="壳的种类"></a>壳的种类</h4><p>1、压缩壳：这是最常见的壳类型，它们的主要目的是压缩文件以减少存储空间占用。<br>2、加密壳：这种壳对文件进行了加密，以增加对恶意软件攻击的防御能力。<br>3、混淆壳：这种壳通过混淆代码来增加防御能力。<br>4、虚拟机壳：这种壳使用虚拟机技术来保护代码。</p><h3 id="常用脱壳方法"><a href="#常用脱壳方法" class="headerlink" title="常用脱壳方法"></a>常用脱壳方法</h3><h4 id="使用工具脱壳"><a href="#使用工具脱壳" class="headerlink" title="使用工具脱壳"></a>使用工具脱壳</h4><p>对于一些简单、常见的壳，可以使用ExeinfoPE识别壳的类型，然后用对应的脱壳工具直接进行脱壳。<br>常用的脱壳工具：Free UPX，unlicense等。</p><h4 id="单步跟踪法脱壳"><a href="#单步跟踪法脱壳" class="headerlink" title="单步跟踪法脱壳"></a>单步跟踪法脱壳</h4><p>通过跟踪程序的执行流程，从而找出程序的OEP（Original Entry Point，原始入口点）。</p><h4 id="ESP命令脱壳"><a href="#ESP命令脱壳" class="headerlink" title="ESP命令脱壳"></a>ESP命令脱壳</h4><h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><p>ESP命令脱壳是基于ESP寄存器（Extended Stack Pointer，扩展栈指针）的特性来进行的一种脱壳技术。在x86架构中，ESP寄存器用于指向当前线程的栈顶。当一个程序被加壳后，壳代码通常会修改程序的入口点，使得程序首先执行壳代码，然后再跳转到原始的程序入口点（OEP）。在这个过程中，壳代码可能会多次调整栈的状态，以隐藏OEP的位置。</p><h5 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h5><p>尽管壳代码可能进行了各种混淆，但在到达OEP之前，栈的状态必须恢复到与程序正常启动时相同的状态，这样才能保证原程序能够正确运行。因此，通过监控ESP的变化，可以在壳代码执行完毕即将跳转到OEP时捕捉到这个状态。</p><h5 id="实施步骤（OllyICE为例）"><a href="#实施步骤（OllyICE为例）" class="headerlink" title="实施步骤（OllyICE为例）"></a>实施步骤（OllyICE为例）</h5><p>1.设置断点：在程序入口处设置断点。（Ctrl+G后输入入口点地址，F2设置断点）</p><p>2.单步执行：逐步执行程序，同时密切注意ESP寄存器的值。（F8）</p><p>3.寻找规律：观察ESP的变化，特别是在函数调用和返回时。当ESP的值稳定下来，不再发生变化时，这通常是接近OEP的一个标志。</p><p>4.确定OEP：当ESP的值保持不变，并且代码流显示出即将跳转到一段新的代码段时，此时的指令指针（EIP）所指向的位置很可能是OEP。</p><p>5.脱壳：</p><p>（1）确定OEP后确保程序暂停在 OEP 处。</p><p>（2）按“Alt+D”打开 OllyDump 对话框。</p><p>（3）选择“Dump debugged process”。</p><p>（4）选择保存路径，点击“Dump”按钮。</p>]]></content>
     
     
     
